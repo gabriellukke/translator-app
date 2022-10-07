@@ -1,6 +1,6 @@
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
-import { getLanguages } from '../services/translateApi';
+import { getLanguages, translate } from '../services/translateApi';
 
 const Home: NextPage = () => {
   useEffect(() => {
@@ -9,6 +9,11 @@ const Home: NextPage = () => {
       console.log(languages);
     };
     fetchLanguages();
+    const translateTest = async () => {
+      const translated = await translate('hello', 'en', 'pt');
+      console.log(translated);
+    };
+    translateTest();
   }, []);
   return (
     <div className="text-3xl font-bold underline">React Next Boilerplate</div>
