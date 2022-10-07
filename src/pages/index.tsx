@@ -1,5 +1,6 @@
 import type { NextPage } from 'next';
 import { useEffect } from 'react';
+import Header from '../components/Header';
 import { getLanguages, translate } from '../services/translateApi';
 
 const Home: NextPage = () => {
@@ -16,7 +17,9 @@ const Home: NextPage = () => {
     translateTest();
   }, []);
   return (
-    <div className="text-3xl font-bold underline">React Next Boilerplate</div>
+    <main>
+      <Header />
+    </main>
   );
 };
 
