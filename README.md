@@ -1,1 +1,1 @@
-# NextJS Boilerplate
+# Translator App
