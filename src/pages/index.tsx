@@ -4,12 +4,9 @@ import Header from '../components/Header';
 import TextArea from '../components/TextArea';
 import Display from '../components/Display';
 import useDebounce from '../hooks/useDebouncer';
+import { Languages } from '../components/types';
 import { getLanguages, translate } from '../services/translateApi';
-
-type Languages = {
-  code: string;
-  name: string;
-};
+import Select from '../components/Select';
 
 const Home: NextPage = () => {
   const [text, setText] = useState('');
@@ -63,28 +60,18 @@ const Home: NextPage = () => {
           <Display text={translation} />
         </div>
         <div>
-          <select
-            name="sourceLanguage"
-            id="sourceLanguage"
+          <Select
+            name="source"
+            id="source"
             onChange={setSourceLanguageHandler}
-          >
-            {languages?.map((language) => (
-              <option key={language.code} value={language.code}>
-                {language.name}
-              </option>
-            ))}
-          </select>
-          <select
-            name="targetLanguage"
-            id="targetLanguage"
+            options={languages}
+          />
+          <Select
+            name="target"
+            id="target"
             onChange={setTargetLanguageHandler}
-          >
-            {languages?.map((language) => (
-              <option key={language.code} value={language.code}>
-                {language.name}
-              </option>
-            ))}
-          </select>
+            options={languages}
+          />
         </div>
       </section>
     </main>
