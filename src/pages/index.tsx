@@ -57,13 +57,9 @@ const Home: NextPage = () => {
   };
 
   return (
-    <main className="h-screen w-screen bg-ballblue">
+    <main className="flex flex-col h-screen w-screen bg-ballblue">
       <Header />
-      <section className="flex flex-col justify-center items-center h-full">
-        <div className="flex w-2/5 h-2/3">
-          <TextArea name="target" value={text} onChange={setText} />
-          <Display text={translation} />
-        </div>
+      <section className="flex flex-col justify-center items-center flex-grow pb-10">
         <div>
           <Select
             name="source"
@@ -77,6 +73,10 @@ const Home: NextPage = () => {
             onChange={setTargetLanguageHandler}
             options={languages}
           />
+        </div>
+        <div className="flex w-2/5 h-1/3">
+          <TextArea name="target" value={text} onChange={setText} />
+          <Display text={translation} />
         </div>
       </section>
     </main>
