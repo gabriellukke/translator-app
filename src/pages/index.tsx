@@ -60,14 +60,16 @@ const Home: NextPage = () => {
     <main className="flex flex-col h-screen w-screen bg-ballblue">
       <Header />
       <section className="flex flex-col justify-center items-center flex-grow pb-10">
-        <div>
+        <div className="flex w-2/5">
           <Select
+            className="w-1/2 p-2 bg-white shadow-lg rounded-tl-lg text-2xl text-center border border-b-gray-400 hover:bg-gray-200 focus:bg-gray-300 cursor-pointer"
             name="source"
             id="source"
             onChange={setSourceLanguageHandler}
             options={languages}
           />
           <Select
+            className="w-1/2 p-2 bg-white shadow-lg rounded-tr-lg text-2xl text-center border border-b-gray-400 hover:bg-gray-200 focus:bg-gray-300 cursor-pointer"
             name="target"
             id="target"
             onChange={setTargetLanguageHandler}
