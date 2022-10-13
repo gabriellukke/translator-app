@@ -10,7 +10,7 @@ import Select from '../components/Select';
 
 const Home: NextPage = () => {
   const [text, setText] = useState('');
-  const [translation, setTranslation] = useState('');
+  const [translation, setTranslation] = useState('Tradução');
   const [languages, setLanguages] = useState<Languages[]>([]);
   const [sourceLanguage, setSourceLanguage] = useState('en');
   const [targetLanguage, setTargetLanguage] = useState('en');
@@ -26,7 +26,12 @@ const Home: NextPage = () => {
   }, []);
 
   useEffect(() => {
-    if (debounceTranslation) {
+    if (!text) {
+      setTranslation('Tradução');
+    }
+    if (debounceTranslation && text) {
+      setTranslation('Traduzindo...');
+
       const fetchData = async () => {
         const { translatedText } = await translate(
           debounceTranslation,
@@ -37,7 +42,7 @@ const Home: NextPage = () => {
       };
       fetchData();
     }
-  }, [debounceTranslation, sourceLanguage, targetLanguage]);
+  }, [debounceTranslation, sourceLanguage, targetLanguage, text]);
 
   const setSourceLanguageHandler = (
     e: React.ChangeEvent<HTMLSelectElement>,
